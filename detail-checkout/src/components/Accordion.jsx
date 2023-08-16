@@ -3,7 +3,7 @@ import DownArrow from "./Svgs/DownArrow";
 import SideArrow from "./Svgs/SideArrow";
 // import SideArrow from "./Svgs/SideArrow";
 
-function Accordion() {
+function Accordion({ feature, featureContent }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const onToggle = () => {
@@ -13,7 +13,7 @@ function Accordion() {
   return (
     <div className="flex flex-col w-full items-center text-black-100 mb-2 font-[400] gap-2">
       <div className="w-full flex justify-between items-center">
-        <p className="text-md">
+        <p className="text-md flex items-center">
           <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">
             <svg
               fill="none"
@@ -27,7 +27,7 @@ function Accordion() {
               <path d="M20 6L9 17l-5-5"></path>
             </svg>
           </span>
-          Saral Rating
+          {feature}
         </p>
         <span>
           {isOpen ? (
@@ -40,8 +40,7 @@ function Accordion() {
       {isOpen && (
         <div className="p-3 border-1 rounded-lg shadow-lg">
           <p className="leading-tighter tracking-tight text-sm">
-            Saral Rating takes in 16 different factors to give you an idea of
-            how the company is performing and what you can expect in the future
+            {featureContent}
           </p>
         </div>
       )}

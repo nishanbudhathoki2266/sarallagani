@@ -13,6 +13,7 @@ const DetailCheckout = () => {
         <Card />
         <Card />
       </div>
+      <div className="h-96 w-96 flex items-center justify-center">TEST</div>
     </div>
   );
 };

@@ -24,87 +24,55 @@ function Card() {
         </div>
       </div>
       <h2 className="inline font-bold text-2xl tracking-wide mb-2">Benefits</h2>
-      <Accordion />
-      <p className="flex items-center text-black-100 mb-2 font-[400] text-md">
-        <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2.5"
-            className="w-3 h-3"
-            viewBox="0 0 24 24"
-          >
-            <path d="M20 6L9 17l-5-5"></path>
-          </svg>
-        </span>
-        Pro Ratings
-      </p>
-      <p className="flex items-center text-black-100 mb-2 font-[400] text-md">
-        <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2.5"
-            className="w-3 h-3"
-            viewBox="0 0 24 24"
-          >
-            <path d="M20 6L9 17l-5-5"></path>
-          </svg>
-        </span>
-        Mutual Fund Analysis
-      </p>
-      <p className="flex items-center text-black-100 mb-2 font-[400] text-md">
-        <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2.5"
-            className="w-3 h-3"
-            viewBox="0 0 24 24"
-          >
-            <path d="M20 6L9 17l-5-5"></path>
-          </svg>
-        </span>
-        Advanced Screener
-      </p>
-      <p className="flex items-center text-black-100 mb-2 font-[400] text-md">
-        <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2.5"
-            className="w-3 h-3"
-            viewBox="0 0 24 24"
-          >
-            <path d="M20 6L9 17l-5-5"></path>
-          </svg>
-        </span>
-        Company Statistics
-      </p>
-      <p className="flex items-center text-black-100 mb-2 font-[400] text-md">
-        <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2.5"
-            className="w-3 h-3"
-            viewBox="0 0 24 24"
-          >
-            <path d="M20 6L9 17l-5-5"></path>
-          </svg>
-        </span>
-        Economy Highlights
-      </p>
+      <Accordion
+        feature="Saral Rating"
+        featureContent="Saral Rating takes in 16 different factors to give you an idea of
+      how the company is performing and what you can expect in the future"
+      />
+      <Accordion
+        feature="Pro Ratings"
+        featureContent="Pro Ratings gives you an indication of how
+        healthy the bank is in terms of major
+        indicators. We have rigorously tested it
+        and is 80% accurate"
+      />
+      <Accordion
+        feature="Mutual Fund Analysis"
+        featureContent="Ever wondered what the big fish are
+        doing?
+        Get access to how the mutual fund have
+        been performing and how they are
+        strategizing"
+      />
+      <Accordion
+        feature="Advanced Screener"
+        featureContent="Do you feel exhausted to go through all the
+        listed companies to find 5 investable companies?
+        Well you don’t have to anymore. With 
+        our advanced screener, you can find companies
+        on the go"
+      />
+      <Accordion
+        feature="Saral Rating"
+        featureContent="Saral Rating takes in 16 different factors to give you an idea of
+      how the company is performing and what you can expect in the future"
+      />
+      <Accordion
+        feature="Company Statistics"
+        featureContent="Just having financials is not enough.
+        Access all the information; be it product 
+        information or the industry information.
+        Stay ahead with simplified statistics
+        on the go"
+      />
+      <Accordion
+        feature="Economy Highlights"
+        featureContent="Just having financials is not enough.
+        Access all the information; be it product 
+        information or the industry information.
+        Stay ahead with simplified statistics
+        on the go"
+      />
       <button className="mt-4 mx-auto text-white text-[20px] tracking-wide bg-black border-0 py-2 rounded-lg px-4">
         Try free for 7 days
       </button>

@@ -1,7 +1,7 @@
 function SideArrow({ onToggle }) {
   return (
     <svg
-      className="w-5 h-5 dark:text-black font-bold hover:cursor-pointer"
+      className="w-4 h-4 dark:text-black font-bold hover:cursor-pointer"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
