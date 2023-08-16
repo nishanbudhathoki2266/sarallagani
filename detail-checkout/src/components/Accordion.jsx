@@ -1,15 +1,25 @@
-import { useState } from "react";
-import DownArrow from "./Svgs/DownArrow";
-import SideArrow from "./Svgs/SideArrow";
-// import SideArrow from "./Svgs/SideArrow";
+import { useRef, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 function Accordion({ plan, planDescription }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState(false);
+  const [height, setHeight] = useState("0px");
+  const [rotate, setRotate] = useState(
+    "transform duration-700 ease rotate-180"
+  );
 
-  const onToggle = () => {
-    setIsOpen((currOpenState) => !currOpenState);
-  };
+  const contentSpace = useRef(null);
+
+  function toggleAccordion() {
+    setActive((prevState) => !prevState);
+    // @ts-ignore
+    setHeight(active ? "0px" : `${contentSpace.current.scrollHeight}px`);
+    setRotate(
+      active
+        ? "transform duration-700 ease rotate-180"
+        : "transform duration-700 ease"
+    );
+  }
 
   return (
     <div className="flex flex-col w-full items-center text-black-100 mb-2 font-[400] gap-2">
@@ -30,21 +40,33 @@ function Accordion({ plan, planDescription }) {
           </span>
           {plan}
         </p>
-        <span>
-          {isOpen ? (
-            <DownArrow onToggle={onToggle} />
-          ) : (
-            <SideArrow onToggle={onToggle} />
-          )}
-        </span>
+        <svg
+          className={`w-4 h-4 dark:text-black font-bold ${rotate} inline-block text-3xl hover:cursor-pointer`}
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 8"
+          onClick={toggleAccordion}
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+          />
+        </svg>
       </div>
-      {isOpen && (
-        <div className="p-3 border-1 rounded-lg shadow-lg">
-          <p className="leading-tighter tracking-tight text-sm">
-            {planDescription}
-          </p>
-        </div>
-      )}
+
+      <div
+        ref={contentSpace}
+        style={{ maxHeight: `${height}` }}
+        className="overflow-hidden shadow-lg rounded-lg transition-max-height duration-700 ease-in-out"
+      >
+        <p className="leading-tighter tracking-tight text-sm p-2">
+          {planDescription}
+        </p>
+      </div>
     </div>
   );
 }
