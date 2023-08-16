@@ -1,3 +1,5 @@
+// import { Fragment } from "react";
+// import DetailCheckout from "./pages/DetailCheckout";
 import { Fragment } from "react";
 import DetailCheckout from "./pages/DetailCheckout";
 

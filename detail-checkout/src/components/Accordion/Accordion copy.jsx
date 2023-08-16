@@ -22,7 +22,7 @@ function Accordion({ plan, planDescription }) {
   }
 
   return (
-    <div className="flex flex-col w-full items-center text-black-100 mb-2 font-[400] gap-2">
+    <div className="flex flex-col w-full items-center text-black-100 mb-2font-[400] gap-2">
       <div className="w-full flex justify-between items-center">
         <p className="text-md flex items-center">
           <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">

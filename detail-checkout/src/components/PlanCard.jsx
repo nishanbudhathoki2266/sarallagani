@@ -1,4 +1,4 @@
-import Accordion from "./Accordion";
+import Accordion from "./Accordion/Accordion";
 
 const plans = [
   {
@@ -41,7 +41,7 @@ const plans = [
 
 function Card() {
   return (
-    <div className="h-auto w-10/12 sm:max-w-md md:max-w-lg lg:max-w-md p-6 rounded-2xl border-1 shadow-xl flex flex-col justify-center">
+    <div className=" h-auto w-10/12 sm:max-w-md md:max-w-lg lg:max-w-md p-6 rounded-2xl border-1 shadow-xl flex flex-col justify-center">
       <div className="flex gap-4 items-start">
         <div className="h-12 w-12">
           <img
@@ -63,13 +63,9 @@ function Card() {
         </div>
       </div>
       <h2 className="inline font-bold text-2xl tracking-wide mb-2">Benefits</h2>
-      {plans.map((plan) => (
-        <Accordion
-          key={plan.id}
-          plan={plan.plan}
-          planDescription={plan.planDescription}
-        />
-      ))}
+
+      <Accordion plans={plans} />
+
       <button className="mt-4 mx-auto text-white text-[20px] tracking-wide bg-black border-0 py-2 rounded-lg px-4">
         Try free for 7 days
       </button>
