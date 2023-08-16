@@ -1,4 +1,3 @@
-import AccordionV2 from "../components/Accordion-v2";
 import Card from "../components/PlanCard";
 
 const DetailCheckout = () => {
@@ -13,7 +12,6 @@ const DetailCheckout = () => {
         <Card />
         <Card />
       </div>
-      <AccordionV2 />
       <div className="h-96 w-96 flex items-center justify-center">TEST</div>
     </div>
   );
