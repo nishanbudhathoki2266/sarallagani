@@ -1,7 +1,12 @@
-import React from "react";
+import { Fragment } from "react";
+import DetailCheckout from "./pages/DetailCheckout";
 
 const App = () => {
-  return <div>Saral Lagani</div>;
+  return (
+    <Fragment>
+      <DetailCheckout />
+    </Fragment>
+  );
 };
 
 export default App;
