@@ -2,7 +2,7 @@ import Accordion from "./Accordion";
 
 function Card() {
   return (
-    <div className="h-auto w-10/12 sm:max-w-md md:max-w-lg lg:max-w-md p-6 rounded-2xl border-1 shadow-xl flex flex-col justify-center relative">
+    <div className="h-auto w-10/12 sm:max-w-md md:max-w-lg lg:max-w-md p-6 rounded-2xl border-1 shadow-xl flex flex-col justify-center">
       <div className="flex gap-4 items-start">
         <div className="h-12 w-12">
           <img
