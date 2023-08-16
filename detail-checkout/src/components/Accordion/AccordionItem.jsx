@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import { Fragment, useRef } from "react";
 
 function AccordionItem({
   plan: { plan, planDescription },
@@ -6,24 +6,11 @@ function AccordionItem({
   open,
   index,
 }) {
-  //   const [active, setActive] = useState(false);
-  //   const [height, setHeight] = useState("0px");
-  //   const [rotate, setRotate] = useState(
-  //     "transform duration-700 ease rotate-180"
-  //   );
-
   const contentSpace = useRef(null);
 
-  //   function toggleAccordion() {
-  //     setActive((prevState) => !prevState);
-  //     // @ts-ignore
-  //     setHeight(active ? "0px" : `${contentSpace.current.scrollHeight}px`);
-  //     setRotate(
-  //       active
-  //         ? "transform duration-700 ease rotate-180"
-  //         : "transform duration-700 ease"
-  //     );
-  //   }
+  function toggleAccordion() {
+    onToggle(index);
+  }
 
   return (
     <Fragment>
@@ -44,41 +31,45 @@ function AccordionItem({
           </span>
           {plan}
         </p>
-        <button onClick={() => onToggle(index)}>
-          <svg
-            className={`w-4 h-4 dark:text-black font-bold inline-block text-3xl hover:cursor-pointer`}
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 8"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
-            />
-          </svg>
-        </button>
+        <svg
+          className={`w-4 h-4 dark:text-black font-bold inline-block text-3xl hover:cursor-pointer transform duration-700 ease ${
+            open ? "" : "rotate-180"
+          }`}
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 8"
+          onClick={toggleAccordion}
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="m1 1 5.326 5.7a.909.909 0 0 0 1.348 0L13 1"
+          />
+        </svg>
       </div>
 
-      {open && (
-        <div
-          ref={contentSpace}
-          className="overflow-hidden shadow-lg rounded-lg transition-max-height duration-700 ease-in-out"
-        >
-          <p className="leading-tighter tracking-tight text-sm p-2">
-            {planDescription}
-          </p>
-        </div>
-      )}
+      <div
+        ref={contentSpace}
+        style={{
+          maxHeight: `${
+            open ? `${contentSpace.current.scrollHeight}px` : "0px"
+          }`,
+        }}
+        className="overflow-hidden shadow-lg rounded-lg transition-max-height duration-700 ease-in-out"
+      >
+        <p className="leading-tighter tracking-tight text-sm p-2">
+          {planDescription}
+        </p>
+      </div>
     </Fragment>
   );
 }
 
 export default AccordionItem;
 
-// style={{ maxHeight: `${height}` }} - DIV
+// - DIV
 
 // ${rotate}  - span className

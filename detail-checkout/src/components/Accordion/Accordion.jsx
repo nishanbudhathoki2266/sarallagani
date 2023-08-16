@@ -5,8 +5,6 @@ import AccordionItem from "./AccordionItem";
 function Accordion({ plans }) {
   const [active, setActive] = useState(null);
 
-  console.log(active);
-
   const handleToggle = (index) => {
     if (active === index) {
       return setActive(null);
