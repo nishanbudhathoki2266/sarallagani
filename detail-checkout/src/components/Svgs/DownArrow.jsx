@@ -1,3 +1,5 @@
+// Here onToggle Function is passed in order to toggle the opening and closing of accordion -> Comes from Accordion component
+// eslint-disable-next-line react/prop-types
 function DownArrow({ onToggle }) {
   return (
     <svg

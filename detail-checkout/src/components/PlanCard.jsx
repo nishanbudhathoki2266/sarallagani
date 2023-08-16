@@ -1,5 +1,44 @@
 import Accordion from "./Accordion";
 
+const plans = [
+  {
+    id: 1,
+    plan: "Saral Rating",
+    planDescription:
+      "Saral Rating takes in 16 different factors to give you an idea of how the company is performing and what you can expect in the future",
+  },
+  {
+    id: 2,
+    plan: "Pro Ratings",
+    planDescription:
+      "Pro Ratings gives you an indication of how healthy the bank is in terms of major indicators. We have rigorously tested it and is 80% accurate",
+  },
+  {
+    id: 3,
+    plan: "Mutual Fund Analysis",
+    planDescription:
+      "Ever wondered what the big fish are doing? Get access to how the mutual fund have been performing and how they are strategizing",
+  },
+  {
+    id: 4,
+    plan: "Advanced Screener",
+    planDescription:
+      "Do you feel exhausted to go through all the listed companies to find 5 investable companies? Well you don’t have to anymore. With our advanced screener, you can find companies on the go",
+  },
+  {
+    id: 5,
+    plan: "Company Statistics",
+    planDescription:
+      "Just having financials is not enough. Access all the information; be it product information or the industry information. Stay ahead with simplified statistics on the go",
+  },
+  {
+    id: 6,
+    plan: "Economy Highlights",
+    planDescription:
+      "Ever wondered how the market would react based on economic activities? Well, be up to date on the economic matters with descriptive report of economic highlights",
+  },
+];
+
 function Card() {
   return (
     <div className="h-auto w-10/12 sm:max-w-md md:max-w-lg lg:max-w-md p-6 rounded-2xl border-1 shadow-xl flex flex-col justify-center">
@@ -24,55 +63,13 @@ function Card() {
         </div>
       </div>
       <h2 className="inline font-bold text-2xl tracking-wide mb-2">Benefits</h2>
-      <Accordion
-        feature="Saral Rating"
-        featureContent="Saral Rating takes in 16 different factors to give you an idea of
-      how the company is performing and what you can expect in the future"
-      />
-      <Accordion
-        feature="Pro Ratings"
-        featureContent="Pro Ratings gives you an indication of how
-        healthy the bank is in terms of major
-        indicators. We have rigorously tested it
-        and is 80% accurate"
-      />
-      <Accordion
-        feature="Mutual Fund Analysis"
-        featureContent="Ever wondered what the big fish are
-        doing?
-        Get access to how the mutual fund have
-        been performing and how they are
-        strategizing"
-      />
-      <Accordion
-        feature="Advanced Screener"
-        featureContent="Do you feel exhausted to go through all the
-        listed companies to find 5 investable companies?
-        Well you don’t have to anymore. With 
-        our advanced screener, you can find companies
-        on the go"
-      />
-      <Accordion
-        feature="Saral Rating"
-        featureContent="Saral Rating takes in 16 different factors to give you an idea of
-      how the company is performing and what you can expect in the future"
-      />
-      <Accordion
-        feature="Company Statistics"
-        featureContent="Just having financials is not enough.
-        Access all the information; be it product 
-        information or the industry information.
-        Stay ahead with simplified statistics
-        on the go"
-      />
-      <Accordion
-        feature="Economy Highlights"
-        featureContent="Just having financials is not enough.
-        Access all the information; be it product 
-        information or the industry information.
-        Stay ahead with simplified statistics
-        on the go"
-      />
+      {plans.map((plan) => (
+        <Accordion
+          key={plan.id}
+          plan={plan.plan}
+          planDescription={plan.planDescription}
+        />
+      ))}
       <button className="mt-4 mx-auto text-white text-[20px] tracking-wide bg-black border-0 py-2 rounded-lg px-4">
         Try free for 7 days
       </button>

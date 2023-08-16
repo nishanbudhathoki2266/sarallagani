@@ -1,9 +1,8 @@
-import Accordion from "../components/Accordion";
 import Card from "../components/PlanCard";
 
 const DetailCheckout = () => {
   return (
-    <div className="flex justify-center items-center flex-col gap-10 p-4">
+    <div className="flex justify-center items-center flex-col gap-10 py-4 md:px-4">
       <h1 className="text-3xl text-[##000000] text-center font-bold">
         Curate Plan as
         <br />

@@ -3,7 +3,8 @@ import DownArrow from "./Svgs/DownArrow";
 import SideArrow from "./Svgs/SideArrow";
 // import SideArrow from "./Svgs/SideArrow";
 
-function Accordion({ feature, featureContent }) {
+// eslint-disable-next-line react/prop-types
+function Accordion({ plan, planDescription }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const onToggle = () => {
@@ -27,7 +28,7 @@ function Accordion({ feature, featureContent }) {
               <path d="M20 6L9 17l-5-5"></path>
             </svg>
           </span>
-          {feature}
+          {plan}
         </p>
         <span>
           {isOpen ? (
@@ -40,7 +41,7 @@ function Accordion({ feature, featureContent }) {
       {isOpen && (
         <div className="p-3 border-1 rounded-lg shadow-lg">
           <p className="leading-tighter tracking-tight text-sm">
-            {featureContent}
+            {planDescription}
           </p>
         </div>
       )}
