@@ -1,4 +1,4 @@
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, useState } from "react";
 
 function AccordionItem({
   plan: { plan, planDescription },
@@ -6,6 +6,7 @@ function AccordionItem({
   open,
   index,
 }) {
+  const [selectedPlan, setSelectedPlan] = useState(false);
   const contentSpace = useRef(null);
 
   function toggleAccordion() {
@@ -16,7 +17,7 @@ function AccordionItem({
     <Fragment>
       <div className="w-full flex justify-between items-center">
         <p className="text-md flex items-center">
-          <span className="w-4 h-4 mr-2 inline-flex items-center justify-center bg-[#4CD263] text-white rounded-full">
+          <span className={`w-4 h-4 mr-2 inline-flex items-center justify-center ${selectedPlan ? 'bg-[#4CD263]': 'bg-gray-300'}  text-white rounded-full cursor-pointer`} onClick={() =>setSelectedPlan(currPlan => !currPlan)}>
             <svg
               fill="none"
               stroke="currentColor"
