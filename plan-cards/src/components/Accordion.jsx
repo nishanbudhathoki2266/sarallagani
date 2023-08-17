@@ -1,4 +1,11 @@
-import { Fragment, createContext, useContext, useRef, useState } from "react";
+import {
+  Fragment,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 const AccordionContext = createContext();
 
@@ -29,7 +36,10 @@ const Accordion = ({ children, handlePriceChange }) => {
 
   const price = selectedPlans.length * 20;
 
-  handlePriceChange(price);
+  //   As calling this handlePriceChange outside of any useEffect would result in error, useEffect is best fit here
+  useEffect(() => {
+    handlePriceChange(price);
+  }, [price, handlePriceChange]);
 
   return (
     <AccordionContext.Provider
@@ -68,12 +78,14 @@ const StaticPlanCheckbox = () => {
 };
 
 const CustomizedPlanCheckbox = ({ index }) => {
-  const checkboxRef = useRef(null);
+  //   const checkboxRef = useRef(null);
+  const [isChecked, setIsChecked] = useState(false);
+
   const { handleSelectedPlans, handleRemovedPlans } =
     useContext(AccordionContext);
 
   const handleCheckPlans = (index) => {
-    const isChecked = checkboxRef.current.checked;
+    // const isChecked = checkboxRef.current.checked;
     if (isChecked) {
       handleSelectedPlans(index);
     }
@@ -82,14 +94,36 @@ const CustomizedPlanCheckbox = ({ index }) => {
     }
   };
 
+  //   In this case, it's better to ignore the dependency es lint error
+  useEffect(() => {
+    handleCheckPlans(index);
+  }, [isChecked]);
+
   return (
+    <svg
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2.5"
+      className={`w-4 h-4 mr-2 inline-flex cursor-pointer items-center justify-center text-white  rounded-full ${
+        isChecked ? "bg-[#4CD263]" : "bg-gray-300"
+      }`}
+      viewBox="0 0 24 24"
+      onClick={() => setIsChecked((currState) => !currState)}
+    >
+      <path d="M20 6L9 17l-5-5"></path>
+    </svg>
+  );
+
+  /* return (
     <input
       type="checkbox"
       ref={checkboxRef}
       onChange={() => handleCheckPlans(index)}
-      className="h-5 w-5"
+      className="appearance-none rounded-full h-4 w-4 cursor-pointer bg-gray-300 text-white-900 checked:bg-[#4CD263]"
     />
-  );
+  ); */
 };
 
 const Toggler = ({ index }) => {

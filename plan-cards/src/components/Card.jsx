@@ -59,9 +59,10 @@ function Card({ content }) {
       </button>
       <p className="text-[14px] mx-auto text-black mt-4">
         Experience the Greatness
-        <span className="text-blue-900 block text-center font-semibold">
+        {/* Keeping as link for now */}
+        <a href="#" className="text-blue-900 block text-center font-semibold">
           Pay Now
-        </span>
+        </a>
       </p>
     </div>
   );
