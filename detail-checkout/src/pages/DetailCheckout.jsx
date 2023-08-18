@@ -2,7 +2,7 @@ import Card from "../components/PlanCard";
 
 const DetailCheckout = () => {
   return (
-    <div className="flex justify-center items-center flex-col gap-10 py-4 md:px-4">
+    <div className="flex justify-center items-center divide-y-8 divide-solid  divide-black flex-col gap-10 py-4 md:px-4">
       <h1 className="text-3xl text-[##000000] text-center font-bold">
         Curate Plan as
         <br />
@@ -12,7 +12,6 @@ const DetailCheckout = () => {
         <Card />
         <Card />
       </div>
-      <div className="h-96 w-96 flex items-center justify-center">TEST</div>
     </div>
   );
 };
