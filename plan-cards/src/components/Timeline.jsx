@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { Fragment } from "react";
 
 const timeLineData = [
@@ -9,13 +11,13 @@ const timeLineData = [
   },
   {
     id: 2,
-    title: "eat",
-    time: "9:30am",
-    description: "Because you need strength.",
+    title: "code",
+    time: "10:30am",
+    description: "Because you need stability.",
   },
   {
     id: 3,
-    title: "eat",
+    title: "sleep",
     time: "9:30am",
     description: "Because you need strength.",
   },
@@ -25,14 +27,81 @@ const timeLineData = [
     time: "9:30am",
     description: "Because you need strength.",
   },
+  {
+    id: 5,
+    title: "eat",
+    time: "9:30am",
+    description: "Because you need strength.",
+  },
+  {
+    id: 6,
+    title: "eat",
+    time: "9:30am",
+    description: "Because you need strength.",
+  },
+  {
+    id: 7,
+    title: "eat",
+    time: "9:30am",
+    description: "Because you need strength.",
+  },
+  {
+    id: 8,
+    title: "eat",
+    time: "9:30am",
+    description: "Because you need strength.",
+  },
+  {
+    id: 9,
+    title: "eat",
+    time: "9:30am",
+    description: "Because you need strength.",
+  },
+  {
+    id: 10,
+    title: "eat",
+    description: "Because you need strength.",
+  },
 ];
 
 function Timeline() {
+  // To keep track of screen sizes
+  const [width, setWidth] = useState(window.innerWidth);
+
+  // To keep track of whether user clicks show more or not in mobile screen
+  const [showMore, setShowMore] = useState(false);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+
+  function handleShowToggle() {
+    setShowMore((currState) => !currState);
+  }
+
+  //  Change width state on first mount accordingly
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  // checking if current size is mobile or not
+  const isMobile = width <= 640;
+
+  //   To show only 4 items if it is mobile
+  const data = isMobile
+    ? showMore
+      ? timeLineData
+      : timeLineData.slice(0, 4)
+    : timeLineData;
+
   return (
-    <div className="h-auto min-h-screen bg-gray-900 p-6 text-white flex sm:justify-center items-center">
+    <div className="h-auto min-h-screen bg-gray-900 px-6 py-10 text-white flex sm:justify-center items-center">
       {/* Timeline starts here */}
-      <ol className="overflow-auto sm:h-auto sm:flex sm:flex-wrap xl:flex-nowrap sm:gap-2">
-        {timeLineData.map((timeline) => (
+      <ol className="overflow-autojustify-center sm:h-auto sm:flex sm:flex-wrap xl:flex-nowrap sm:gap-2">
+        {data.map((timeline) => (
           <Fragment key={timeline.id}>
             <li className="relative mb-6 sm:mb-0">
               <div className="flex items-center">
@@ -65,6 +134,14 @@ function Timeline() {
             </li>
           </Fragment>
         ))}
+        {isMobile && (
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => handleShowToggle()}
+          >
+            {showMore ? "View Less" : "View More"}
+          </button>
+        )}
       </ol>
     </div>
   );
