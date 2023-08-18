@@ -2,7 +2,8 @@ import { Fragment, useState } from "react";
 import Accordion from "./Accordion";
 import { plans } from "../data/plans";
 
-function Card({ content }) {
+function Card({ content, planTime }) {
+  console.log(planTime);
   const [customizedPrice, setCustomizedPrice] = useState(0);
 
   const handlePriceChange = (price) => {
@@ -10,7 +11,7 @@ function Card({ content }) {
   };
 
   return (
-    <div className=" h-auto w-10/12 sm:max-w-md md:max-w-lg lg:max-w-md p-6 rounded-2xl border-1 shadow-xl flex flex-col justify-center">
+    <div className="h-auto w-10/12 sm:max-w-md md:max-w-lg lg:max-w-md p-6 rounded-2xl border-1 shadow-xl flex flex-col justify-center">
       <div className="flex gap-4 items-start">
         <div className="h-12 w-12">
           <img src={content.image} alt={`Image of ${content.title}`} />
@@ -24,15 +25,23 @@ function Card({ content }) {
           </div>
           <div>
             <h1 className="inline font-bold text-4xl">
-              Rs. {content.price ? content.price : customizedPrice}
+              Rs.{" "}
+              {content.price
+                ? planTime === "monthly"
+                  ? content.price.monthly
+                  : content.price.anually
+                : customizedPrice}
             </h1>
-            <span className="font-bold text-lg"> / month</span>
+            <span className="font-bold text-lg">
+              {" "}
+              / {planTime === "monthly" ? "month" : "year"}
+            </span>
           </div>
         </div>
       </div>
       <h2 className="inline font-bold text-2xl tracking-wide mb-2">Benefits</h2>
 
-      <Accordion handlePriceChange={handlePriceChange}>
+      <Accordion handlePriceChange={handlePriceChange} planTime={planTime}>
         {plans.map((plan, index) => (
           <Fragment key={plan.id}>
             <div className="w-full flex justify-between items-center">
@@ -60,7 +69,7 @@ function Card({ content }) {
       <p className="text-[14px] mx-auto text-black mt-4">
         Experience the Greatness
         {/* Keeping as link for now */}
-        <a href="#" className="text-blue-900 block text-center font-semibold">
+        <a href="#" className="text-[#165DFF] block text-center font-semibold">
           Pay Now
         </a>
       </p>

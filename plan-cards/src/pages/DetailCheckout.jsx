@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Card from "../components/Card";
 
 const contents = [
@@ -5,7 +6,10 @@ const contents = [
     id: 1,
     title: "Bundle",
     subtitle: "Active Investors",
-    price: 99,
+    price: {
+      monthly: 99,
+      anually: 1100,
+    },
     image: "card-images/application.png",
     type: "static",
   },
@@ -19,27 +23,62 @@ const contents = [
 ];
 
 function DetailCheckout() {
+  // For toggling between monthly and anually
+  const [planTime, setPlanTime] = useState("monthly");
+
+  function handleChangePlanTime(time) {
+    setPlanTime(time);
+  }
+
   return (
-    <div className="flex sm:container mx-auto justify-center items-center pb-20 flex-col px-4 gap-10 py-4">
+    <div className="flex sm:container mx-auto justify-center items-center pb-20 flex-col px-4 gap-8 py-4">
       {/* Heading */}
       <h1 className="text-3xl text-[##000000] text-center font-bold">
         Curate Plan as
         <br />
         Per Your Need
       </h1>
+      {/* Toggler */}
+      <div className="bg-[#F1F1F1] flex gap-4 text-2xl font-[400] rounded-3xl px-4 py-3">
+        <p
+          className={`${
+            planTime === "monthly" ? "underline decoration-4" : ""
+          } underline-offset-8 hover:cursor-pointer`}
+          onClick={() => handleChangePlanTime("monthly")}
+        >
+          Monthly
+        </p>
+        <p
+          className={`${
+            planTime === "anually" ? "underline decoration-4" : ""
+          } underline-offset-8 hover:cursor-pointer`}
+          onClick={() => handleChangePlanTime("anually")}
+        >
+          Anually
+        </p>
+      </div>
+      {/* Texts under toggler */}
+      <div className="text-center font-[400] text-sm text-black -mt-6">
+        <p>Save upto 20% Anually.</p>
+        <p>Get practically 2 months free subscription</p>
+      </div>
+      <span className="block max-w-[920px] mb-4 w-full h-[1.5px] bg-[#DEDEDE]"></span>
       {/* Cards */}
-      <div className="flex flex-wrap w-full justify-center items-center -m-4 gap-8">
+      <div className="flex flex-wrap w-full justify-center items-start -m-4 gap-8">
         {contents.map((content) => (
-          <Card key={content.id} content={content} />
+          <Card key={content.id} content={content} planTime={planTime} />
         ))}
       </div>
+      <span className="block max-w-[920px] mb-4 mt-8 w-full h-[2px] bg-[#DEDEDE]"></span>
+
       {/* Compare plans */}
-      <div className="container h-auto max-w-[920px] auto px-2 py-4 sm:p-6 rounded-2xl border-1 shadow-xl flex flex-col items-center justify-center">
-        <div className="flex items-start justify-between w-full">
+      <div className="container divide-y-2 h-auto max-w-[920px] auto px-2 py-4 sm:p-6 rounded-2xl border-1 shadow-xl flex flex-col items-center justify-center">
+        <div className="flex items-start mb-8 justify-between gap-2 w-full">
           <div>
-            <h2 className="sm:text-2xl font-bold mb-2 text-xl">
+            <h2 className="sm:text-2xl font-bold mb-4 text-xl">
               Compare Plans
             </h2>
+            <span className="block max-w-[920px] mb-4 mt-4 w-full h-[2px] bg-[#DEDEDE]"></span>
             <div>
               {/* ICONS AND TITLE */}
               <div className="flex items-start gap-2">
@@ -49,7 +88,7 @@ function DetailCheckout() {
                   className="h-6 w-6 object-cover"
                 />
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-2xl font-[700]">Track</h3>
+                  <h3 className="sm:text-2xl text-xl font-[700]">Track</h3>
                   <p className="text-md text-[#5F5F5F]">Import Portfolio</p>
                   <p className="text-md text-[#5F5F5F]">Multiple Portfolio</p>
                   <p className="text-md text-[#5F5F5F]">Performance Review</p>
@@ -60,9 +99,10 @@ function DetailCheckout() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center text-center gap-[1px] sm:gap-12 items-center">
+          <div className="flex justify-center text-center gap-2 sm:gap-12 items-center">
             <div className="flex flex-col gap-2">
-              <h2 className="sm:text-2xl font-bold mb-2 text-xl">Free</h2>
+              <h2 className="sm:text-2xl font-bold text-lg">Free</h2>
+              <span className="block max-w-[920px] mb-6 mt-2 w-full h-[2px] bg-[#DEDEDE]"></span>
               <p>&nbsp;</p>
               <p>
                 <span className="w-4 h-4 mr-2 inline-flex items-center justify-center text-white rounded-full bg-[#4CD263]">
@@ -128,7 +168,8 @@ function DetailCheckout() {
               </p>
             </div>
             <div className="flex flex-col gap-2">
-              <h2 className="sm:text-2xl font-bold mb-2 text-xl">Saral</h2>
+              <h2 className="sm:text-2xl font-bold text-lg">Saral</h2>
+              <span className="block max-w-[920px]  mb-6 mt-2 w-full h-[2px] bg-[#DEDEDE]"></span>
               <p>&nbsp;</p>
               <p>
                 <span className="w-4 h-4 mr-2 inline-flex items-center justify-center text-white rounded-full bg-[#4CD263]">
@@ -209,7 +250,7 @@ function DetailCheckout() {
                   className="h-6 w-6 object-cover"
                 />
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-2xl font-[700]">Analyze</h3>
+                  <h3 className="sm:text-2xl text-xl font-[700]">Analyze</h3>
                   <p className="text-md text-[#5F5F5F]">
                     Annual Financial Data
                   </p>

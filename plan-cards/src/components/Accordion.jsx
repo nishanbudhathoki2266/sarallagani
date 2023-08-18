@@ -10,7 +10,7 @@ import {
 const AccordionContext = createContext();
 
 // eslint-disable-next-line react/prop-types
-const Accordion = ({ children, handlePriceChange }) => {
+const Accordion = ({ children, handlePriceChange, planTime }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [selectedPlans, setSelectedPlans] = useState([]);
 
@@ -34,7 +34,9 @@ const Accordion = ({ children, handlePriceChange }) => {
     );
   };
 
-  const price = selectedPlans.length * 20;
+  // Changing the amount according to the plan (anual and monthly)
+  const amount = planTime === "monthly" ? 20 : 240;
+  const price = selectedPlans.length * amount;
 
   //   As calling this handlePriceChange outside of any useEffect would result in error, useEffect is best fit here
   useEffect(() => {
