@@ -20,7 +20,7 @@ const contents = [
 
 function DetailCheckout() {
   return (
-    <div className="flex sm:container mx-auto justify-center items-center flex-col px-4 gap-10 py-4">
+    <div className="flex sm:container mx-auto justify-center items-center pb-20 flex-col px-4 gap-10 py-4">
       {/* Heading */}
       <h1 className="text-3xl text-[##000000] text-center font-bold">
         Curate Plan as
@@ -232,7 +232,9 @@ function DetailCheckout() {
           </div>
           <div className="flex justify-center text-center gap-[1px] sm:gap-12 items-center">
             <div className="flex flex-col gap-2">
-              <h2 className="sm:text-2xl font-bold mb-2 text-xl">Free</h2>
+              <h2 className="sm:text-2xl font-bold mb-2 text-xl opacity-0">
+                Free
+              </h2>
               <p>&nbsp;</p>
               <p>
                 <span className="w-4 h-4 mr-2 inline-flex items-center justify-center text-white rounded-full bg-[#4CD263]">
@@ -416,7 +418,9 @@ function DetailCheckout() {
               </p>
             </div>
             <div className="flex flex-col gap-2">
-              <h2 className="sm:text-2xl font-bold mb-2 text-xl">Saral</h2>
+              <h2 className="sm:text-2xl font-bold mb-2 text-xl opacity-0">
+                Saral
+              </h2>
               <p>&nbsp;</p>
               <p>
                 <span className="w-4 h-4 mr-2 inline-flex items-center justify-center text-white rounded-full bg-[#4CD263]">
